@@ -32,8 +32,14 @@ public class Utility {
 		for (int i = 0; i < CNames.length; i++) {
 
 			nameOfEvent.add(cursor.getString(1));
-			startDates.add(getDate(Long.parseLong(cursor.getString(3))));
-			endDates.add(getDate(Long.parseLong(cursor.getString(4))));
+			String startDateString = cursor.getString(3);
+			if (startDateString != null)
+				startDates.add(getDate(Long.parseLong(startDateString)));
+
+			String endDateString = cursor.getString(4);
+			if (endDateString != null)
+				endDates.add(getDate(Long.parseLong(cursor.getString(4))));
+			
 			descriptions.add(cursor.getString(2));
 			CNames[i] = cursor.getString(1);
 			cursor.moveToNext();
